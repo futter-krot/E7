@@ -2,7 +2,7 @@
 ## Subject: MongoDB & Redis
 Instruction:
 1) Clone the repository
-2) Install redis, django, djongo, pymongo, django-redis to your PC
+2) Install redis, django, djongo, pymongo, django-redis on your PC
 3) Make sure the precreated **Redis** and **MongoDB** are working for you (if not, then replace the DATABASES>CLIENT>host & CACHES>default>LOCATION with your MongoDB & Redis IP.)
 4) Run the server using command: **_python manage.py runserver_** (if you've added your databases, then run **_python manage.py makemigrations_** firstly, and **_python manage.py migrate_** fte.)
 ```
