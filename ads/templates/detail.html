@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>{{ det.name }}</h1>
+        <p>{{ det.description }}</p>
+    </div>
+    <div class="accordion" id="accordionExample"  style="margin-top: 1rem;">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Comments & Tags
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="container-fluid">
+                <div>
+                    {% if not det.tags.all %}
+                        <h1>Tags</h1>
+                        <p>No tags</p>
+                        <a href="{% url "ads:tag-create" det.id %}">Add one</a>
+                    {% else %}
+                        <h1>Tags: {{ tags }}</h1>
+                        <a href="{% url "ads:tag-create" det.id %}">Add a tag</a> <br>
+                        {% for tag in det.tags.all %}
+                            <strong>#{{ tag.text }}</strong>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% if not det.comments.all %}
+                    <h1>Comments</h1>
+                    <p>No comments</p> <br>
+                    <a href="{% url "ads:comment-create" det.id %}">Add one</a>
+                {% else %}
+                    <h1>Comments: {{ comments }}</h1>
+                    <a href="{% url "ads:comment-create" det.id %}">Add a comment</a> <br>
+                    {% for comm in det.comments.all %}
+                        <hr>
+                        <h3>{{ comm.author }}</h3>
+                        <p>{{ comm.text }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
