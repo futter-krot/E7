@@ -14,3 +14,4 @@ URLS:
     path("addetail/<int:pk>/tag", views.AddTag.as_view(), name='tag-create'), # - add_tag.html (CreateView)
     path("<int:pk>", views.get_ad, name='get-ad') # - get.html (function, allows to find ad by ID)
 ```
+**note. Statistics with a number of comments and tags are available in DetailView**
